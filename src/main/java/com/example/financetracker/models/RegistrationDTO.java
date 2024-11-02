@@ -1,5 +1,6 @@
 package com.example.financetracker.models;
 
+
 public class RegistrationDTO {
     private String username;
     private String password;

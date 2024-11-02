@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f6f9;
+        }
+        .registration-form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .registration-form h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .registration-form label {
+            display: block;
+            margin-top: 10px;
+        }
+        .registration-form input[type="text"],
+        .registration-form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .registration-form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .registration-form button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+<div class="registration-form">
+    <h2>Register</h2>
+    <form id="registerForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+        </div>
+        <button type="button" onclick="registerUser()">Register</button>
+    </form>
+    <p id="errorMessage" style="color: red; display: none;">Registration failed. Please try again.</p>
+</div>
+
+<script>
+    async function registerUser() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            const response = await fetch('/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                window.location.href = '/auth/login'; // Redirect to /user/ upon successful registration
+            } else {
+                document.getElementById("errorMessage").style.display = 'block';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById("errorMessage").style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>

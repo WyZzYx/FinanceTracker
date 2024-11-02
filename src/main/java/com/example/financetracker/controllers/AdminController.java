@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class AdminController {
 
-    @GetMapping(" ")
+    @GetMapping("/")
     public String PrintWord() {
 
         return "Admin level access";

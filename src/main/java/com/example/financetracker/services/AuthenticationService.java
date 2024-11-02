@@ -51,19 +51,18 @@ public class AuthenticationService {
     }
 
     public LoginResponseDTO loginUser(String username, String password) {
-
-
         try {
 
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken
-                    (username, password));
+            ApplicationUser user = userRepository.findByUsername(username).orElse(null);
 
 
-
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
             String token = tokenService.generateJWT(authentication);
-            return new LoginResponseDTO(userRepository.findByUsername(username).get(), token);
+
+            return new LoginResponseDTO(user, token);
         } catch (AuthenticationException e) {
+            e.printStackTrace();
             return new LoginResponseDTO(null, " ");
         }
     }

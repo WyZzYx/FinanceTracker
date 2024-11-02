@@ -1,8 +1,9 @@
 package com.example.financetracker.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 @CrossOrigin("*")
 public class UserController {
@@ -10,7 +11,7 @@ public class UserController {
     @GetMapping("/")
     public String PrintWord() {
 
-        return "User level access";
+        return "register.html";
     }
 
 
