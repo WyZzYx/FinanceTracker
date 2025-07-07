@@ -34,7 +34,7 @@ public class FinanceTrackerApplication {
 		 	Set<Role> roles = new HashSet<>();
 		 	roles.add(adminRole);
 
-			ApplicationUser admin = new ApplicationUser(1L, "admin", passwordEncoder.encode("password"), roles );
+			ApplicationUser admin = new ApplicationUser(1L, "admin", passwordEncoder.encode("password"), "email.exa.com",  roles );
 
 			userRepository.save(admin);
 		};

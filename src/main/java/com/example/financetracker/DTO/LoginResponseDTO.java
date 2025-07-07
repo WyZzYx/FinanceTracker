@@ -1,4 +1,6 @@
-package com.example.financetracker.models;
+package com.example.financetracker.DTO;
+
+import com.example.financetracker.models.ApplicationUser;
 
 public class LoginResponseDTO {
     private ApplicationUser user;

@@ -18,6 +18,9 @@ public class ApplicationUser implements UserDetails {
     @Column(name = "user_id")
     private Long id;
 
+    @Column
+    private String email;
+
     @Column(unique = true)
     private String username;
 
@@ -43,11 +46,12 @@ public class ApplicationUser implements UserDetails {
         this.password = password;
     }
 
-    public ApplicationUser(Long id, String username, String password, Set<Role> authorities) {
+    public ApplicationUser(Long id, String username, String password,String email, Set<Role> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.authorities = authorities;
+        this.email = email;
     }
 
     public ApplicationUser() {

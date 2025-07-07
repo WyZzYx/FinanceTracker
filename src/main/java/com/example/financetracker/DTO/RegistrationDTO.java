@@ -1,10 +1,10 @@
-package com.example.financetracker.models;
+package com.example.financetracker.DTO;
 
 
 public class RegistrationDTO {
     private String username;
     private String password;
-
+    private String email;
     public RegistrationDTO(String username)
     {
         this.username = username;
@@ -40,5 +40,13 @@ public class RegistrationDTO {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
